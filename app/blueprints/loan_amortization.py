@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, url_for, redirect, flash
 from app.db_connect import get_db
+from ..functions import loan_amortization_calculation
 
 loan_amortization = Blueprint('loan_amortization', __name__)
 
@@ -39,6 +40,9 @@ def update_loan(loan_info_id):
         term_years = request.form['term_years']
         interest_rate = request.form['interest_rate']
 
+        #call the function to calculate the monthly payment
+        monthly_payment=loan_amortization_calculation(int(loan_amount), int(term_years), float(interest_rate))
+
         cursor.execute('UPDATE loan_info SET loan_amount = %s, term_years = %s, interest_rate = %s WHERE loan_info_id = %s',
                        (loan_amount, term_years, interest_rate, loan_info_id))
         db.commit()
@@ -63,3 +67,4 @@ def delete_loan(loan_info_id):
 
     flash('Loan info deleted successfully!', 'danger')
     return redirect(url_for('loan_amortization.loan'))
+
