@@ -3,7 +3,7 @@
 {% block content %}
 <div class="container mt-5">
     <h1 class="text-center mb-4">Add Sales Data</h1>
-    <form method="POST" action="{{ url_for('sales.sale') }}">
+    <form method="POST" action="{{ url_for('sales.show_sales') }}">
         <div class="form-group">
             <label for="monthly_amount">Monthly Amount</label>
             <input type="number" step="0.01" class="form-control" name="monthly_amount" id="monthly_amount" placeholder="Enter monthly amount" required>
