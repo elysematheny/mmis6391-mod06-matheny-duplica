@@ -9,3 +9,11 @@ def index():
 def about():
     return render_template('about.html')
 
+@app.route('/regions')
+def regions():
+    return render_template('regions.html')
+
+
+@app.route('/reports')
+def reports():
+    return render_template('reports.html')

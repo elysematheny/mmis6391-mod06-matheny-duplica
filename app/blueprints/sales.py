@@ -14,11 +14,12 @@ def show_sales():
         result = cursor.fetchall()
     df = pd.DataFrame(result)
     # Update the Pandas DataFrame to include Edit and Delete buttons
+    df.columns = [col.lower() for col in df.columns]  # Normalize column names to lowercase
     df['Actions'] = df['sales_data_id'].apply(lambda id:
-      f'<a href="{url_for("sales.edit_sales_data", sales_data_id=id)}" class="btn btn-sm btn-info">Edit</a> '
-      f'<form action="{url_for("sales.delete_sales_data", sales_data_id=id)}" method="post" style="display:inline;">'
-      f'<button type="submit" class="btn btn-sm btn-danger">Delete</button></form>'
-      )
+                                              f'<a href="{url_for("sales.edit_sales_data", sales_data_id=id)}" class="btn btn-sm btn-info">Edit</a> '
+                                              f'<form action="{url_for("sales.delete_sales_data", sales_data_id=id)}" method="post" style="display:inline;">'
+                                              f'<button type="submit" class="btn btn-sm btn-danger">Delete</button></form>'
+                                              )
     table_html = df.to_html(classes='dataframe table table-striped table-bordered', index=False, header=False,
                             escape=False)
     rows_only = table_html.split('<tbody>')[1].split('</tbody>')[0]

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Sales Reports{% endblock %}
+
+{% block content %}
+<h2>Sales Reports</h2>
+
+<!-- Total Sales by Region -->
+<h3>Total Sales by Region</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Region</th>
+            <th>Total Sales ($)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for region, total_sales in total_sales_by_region.items() %}
+        <tr>
+            <td>{{ region }}</td>
+            <td>{{ total_sales }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Monthly Sales Trend -->
+<h3>Monthly Sales Trend</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Month</th>
+            <th>Total Sales ($)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for month, sales in monthly_sales_trend.items() %}
+        <tr>
+            <td>{{ month }}</td>
+            <td>{{ sales }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Top Performing Region -->
+<h3>Top Performing Region</h3>
+<p>The top-performing region is <strong>{{ top_region }}</strong>.</p>
+
+{% endblock %}

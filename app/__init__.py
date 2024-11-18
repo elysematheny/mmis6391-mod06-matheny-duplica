@@ -8,9 +8,14 @@ app.secret_key = 'your-secret'  # Replace with an environment variable for secur
 
 # Register Blueprints
 from app.blueprints.sales import sales  # Import the sales blueprint
-
+from app.blueprints.regions import regions
+from app.blueprints.reports import reports
+from app.blueprints.visualizations import visualizations
 
 app.register_blueprint(sales)  # Register the sales blueprint
+app.register_blueprint(regions)
+app.register_blueprint(reports)
+app.register_blueprint(visualizations)
 
 # Import additional routes, if any
 from . import routes
