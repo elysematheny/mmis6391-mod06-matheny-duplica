@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sales Data Management System">
+    <meta name="keywords" content="sales, data, management, reports, visualizations">
+    <meta name="author" content="Your Name">
     <title>{% block title %}Sales Data Management{% endblock %}</title>
 
     <!-- Bootstrap 4 CSS for responsive design and styling -->
@@ -28,9 +31,9 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="{{ url_for('sales.show_sales') }}">Sales Data</a>
-            <a class="navbar-brand" href="{{ url_for('regions') }}">Manage Regions</a>
-            <a class="navbar-brand" href="{{ url_for('reports') }}">Reports</a>
-            <a class="navbar-brand" href="{{ url_for('visualizations.show_visualizations') }}">Visualizations</a>
+            <a class="navbar-brand" href="{{ url_for('regions.show_regions') }}">Manage Regions</a>
+            <a class="navbar-brand" href="{{ url_for('sales.reports') }}">Reports</a>
+            <a class="navbar-brand" href="{{ url_for('sales.visualization') }}">Visualizations</a>
         </div>
     </nav>
 
@@ -55,3 +58,4 @@
 
 </body>
 </html>
+
